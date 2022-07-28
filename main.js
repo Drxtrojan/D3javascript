@@ -31,12 +31,15 @@ d3.csv("data.csv").then(data => {
     console.log(data)
      data.map(d => {
        
-        d.year = +d.year
+        // d.year = +d.year
 
-         d3.nest()
-         .entries(data)
-         .key(d => d.winner)
-    })
+        //  d3.nest()
+        //  .entries(data)
+        //  .key(d => d.winner)
+     })
+     d3.nest()
+     .key(d => d.winner)
+     .entries(data)
     data2 = data
 
 // d3.csv("data.csv").then(data => {
