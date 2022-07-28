@@ -29,18 +29,30 @@ let data2
 
 d3.csv("data.csv").then(data => {
     console.log(data)
-    data.map(d => {
+     data.map(d => {
        
         d.year = +d.year
+
+         d3.nest()
+         .entries(data)
+         .key(d => d.winner)
     })
     data2 = data
+
+// d3.csv("data.csv").then(data => {
+//     console.log(data)
+//     data = d3.nest()
+//         .key(d => d.winner)
+//         .entries(data)
+         
+// })
 
 
    
 
     
     
-    x.domain([0, d3.max(data.map(d => d.year))])
+    x.domain([0, d3.max(data.map(d => d.winner))])
     y.domain(data.map(d => d.winner))
 
     xAxisGroup.call(xAxis)
@@ -52,7 +64,7 @@ d3.csv("data.csv").then(data => {
             .append("rect")
             .attr("x", 0)
             .attr("y", (d, i, a) => y(d.winner))
-            .attr("width", d => x(d.year))
+            .attr("width", d => x(d.winner))
             .attr("height", y.bandwidth())
 })
 
