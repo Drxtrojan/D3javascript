@@ -55,7 +55,7 @@ d3.csv("data.csv").then(data => {
 
 
 
-    x.domain([0, d3.max(data2.map(d => d.value.length))])
+    x.domain([0, d3.max(data2.map(d => d.values.length))])
     y.domain(data2.map(d => d.key))
 
     xAxisGroup.call(xAxis)
@@ -66,8 +66,8 @@ d3.csv("data.csv").then(data => {
         
             .append("rect")
             .attr("x", 0)
-            .attr("y", (d, i, a) => y(d.data2))
-            .attr("width", d => x(d.data2))
+            .attr("y", (d, i, a) => y(d.key))
+            .attr("width", d => x(d.values.length))
             .attr("height", y.bandwidth())
 })
 
