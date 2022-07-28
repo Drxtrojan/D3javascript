@@ -39,7 +39,7 @@ d3.csv("data.csv").then(data => {
      })
      data2 = d3.nest()
      .key(d => d.winner)
-     .entries(data2)
+     .entries(data)
     
 
 // d3.csv("data.csv").then(data => {
@@ -53,10 +53,10 @@ d3.csv("data.csv").then(data => {
 
    
 
-    
-    
-    x.domain([0, d3.max(data2.map(d => d.data2))])
-    y.domain(data2.map(d => d.winner))
+
+
+    x.domain([0, d3.max(data2.map(d => d.value.length))])
+    y.domain(data2.map(d => d.key))
 
     xAxisGroup.call(xAxis)
     yAxisGroup.call(yAxis)
