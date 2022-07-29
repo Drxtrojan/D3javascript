@@ -33,27 +33,20 @@ d3.csv("data.csv").then(data => {
        
         d.year = +d.year
 
-        //  d3.nest()
-        //  .entries(data)
-        //  .key(d => d.winner)
+       
      })
      data2 = d3.nest()
      .key(d => d.winner)
-     .entries(data)
+        .entries(data)
+        
     
 
-// d3.csv("data.csv").then(data => {
-//     console.log(data)
-//     data = d3.nest()
-//         .key(d => d.winner)
-//         .entries(data)
-         
-// })
+
 
 
    
 
-
+   
 
     x.domain([0, d3.max(data2.map(d => d.values.length))])
     y.domain(data2.map(d => d.key))
@@ -61,14 +54,35 @@ d3.csv("data.csv").then(data => {
     xAxisGroup.call(xAxis)
     yAxisGroup.call(yAxis)
     
+    
     let elements = elementGroup.selectAll("rect").data(data2)
-            elements.enter()
-        
+             elements.enter()
+                
             .append("rect")
             .attr("x", 0)
             .attr("y", (d, i, a) => y(d.key))
             .attr("width", d => x(d.values.length))
             .attr("height", y.bandwidth())
+            .attr("class", d => d.key)
+    
+           
+    
+    
+                
+    
+             
+    
+    
+    
+        
+    
+    
+    
+
+    
+     
+            
+    
 })
 
    
